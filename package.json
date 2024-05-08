@@ -1,6 +1,6 @@
 {
   "name": "express-ts-template",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "This repository provides a robust starting point for building web applications using Express.js with TypeScript. It includes essential configurations, middleware setup, and project structure to kickstart your development process.",
   "main": "./dist/index.js",
   "scripts": {

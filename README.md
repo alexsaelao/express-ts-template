@@ -1,7 +1,7 @@
 # express-ts-template
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/iamlex01/express-ts-template/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-v1.0.1-green.svg)](https://github.com/iamlex01/express-ts-template.git)
+[![Version](https://img.shields.io/badge/version-v1.0.2-green.svg)](https://github.com/iamlex01/express-ts-template.git)
 [![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](https://github.com/iamlex01/express-ts-template.git)
 [![Downloads](https://img.shields.io/npm/dm/express.svg)](https://github.com/expressjs/express.git)
 
