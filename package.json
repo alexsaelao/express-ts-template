@@ -11,7 +11,7 @@
     "build-ts": "tsc",
     "serve": "node dist/server.js",
     "clean": "rimraf ./dist",
-    "gen-model": "ts-node-dev src/generate-models.ts"
+    "gen-model": "ts-node-dev src/utils/generate-models.ts"
   },
   "keywords": [
     "expressjs",

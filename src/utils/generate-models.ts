@@ -17,7 +17,7 @@ const skipTables: Array<string> = [];
 
 // Configure Sequelize-auto options
 const options: any = {
-  directory: `${__dirname}/models`, // The directory where the models will be generated
+  directory: `${__dirname}/../models`, // The directory where the models will be generated
   tables: tablesList, // The database tables you want to generate models for
   skipTables: skipTables, // The database tables you don't want to generate models for
   lang: 'ts', // Specify the language for the generated models (TypeScript in this case)
