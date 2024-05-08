@@ -1,11 +1,11 @@
 import { Dialect, Sequelize } from "sequelize";
 import Config from "@configs/config";
-// import { initModels, initModelsTypes } from "@models/init-models";
+import { initModels, initModelsTypes } from "@models/init-models";
 
 export default class DatabaseConnection {
     private static _instance: DatabaseConnection;
     private readonly sequelize: Sequelize;
-    // private readonly models: initModelsTypes;
+    private readonly models: initModelsTypes;
 
     private constructor() {
 
@@ -26,7 +26,7 @@ export default class DatabaseConnection {
             }
         });
 
-        // this.models = initModels(this.sequelize);
+        this.models = initModels(this.sequelize);
         
         this.sequelize
             .authenticate()
@@ -46,7 +46,7 @@ export default class DatabaseConnection {
         return this.sequelize;
     }
 
-    // public getModels(): initModelsTypes {
-    //     return this.models;
-    // }
+    public getModels(): initModelsTypes {
+        return this.models;
+    }
 }
