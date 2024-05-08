@@ -21,4 +21,9 @@ export default class Config {
         PASSWORD: process.env.DB_PASSWORD_PROD,
         TIMEZONE: "00:00",
     };
+    public static readonly requestConfig = {
+		defaultPaginateMinMaxLimit: { min:1, max: 500 },
+		defaultQuantityMinMaxLimit: { min:0 },
+		defaultNameMinMaxLimit: { min:1, max: 100 },
+	};
 }
