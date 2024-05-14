@@ -53,7 +53,8 @@ To get started with [Project Name], follow these steps:
     ```bash
     npm install
     ```
-  Once the dependencies are installed, you must setup databases and create table first.
+    Once the dependencies are installed, you must setup databases and create table first.
+
 5. **Setup PostgreSQL database and create table**: Make sure PostgreSQL is installed on your system. Then, use a PostgreSQL client such as `psql` or a graphical user interface like pgAdmin to connect to your PostgreSQL instance. Once connected, execute the following SQL command to create the `sampleTable`:
 
     ```sql
@@ -95,7 +96,7 @@ To get started with [Project Name], follow these steps:
     DB_PASSWORD_PROD=123456
     ```
 
-  Ensure that to replace the placeholder values (e.g., DB_USERNAME, DB_PASSWORD, DB_NAME) with your actual database credentials.
+    Ensure that to replace the placeholder values (e.g., DB_USERNAME, DB_PASSWORD, DB_NAME) with your actual database credentials.
 
 7. **Generating models from databases**: Before generating models, specify the tables you want to generate models for by adding the table names to the `tablesList` constant in the `src/utils/generate-model.ts` file:
 
@@ -115,9 +116,9 @@ To get started with [Project Name], follow these steps:
     npm run gen-model
     ```
 
-  This command will generate models for Sequelize from an existing database using Sequelize Auto.
+    This command will generate models for Sequelize from an existing database using Sequelize Auto.
 
-  **Note**: Ensure that you have the required Node.js installed before running the commands. Additionally, make sure to configure the database type and tables before generating models.
+    **Note**: Ensure that you have the required Node.js installed before running the commands. Additionally, make sure to configure the database type and tables before generating models.
 
 8. **Running the server**:
     - For development server, use the following command:
@@ -132,7 +133,7 @@ To get started with [Project Name], follow these steps:
         ```
         This will start the Express.js server in production mode, suitable for deploying your application to a production environment.
 
-  Now you're all set up and ready to start working on the project!
+    Now you're all set up and ready to start working on the project!
 
 ## Project Structure
 
