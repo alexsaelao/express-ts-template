@@ -1,8 +1,8 @@
 # express-ts-template
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/iamlex01/express-ts-template/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-v1.0.2-green.svg)](https://github.com/iamlex01/express-ts-template.git)
-[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](https://github.com/iamlex01/express-ts-template.git)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/alexsaelao/express-ts-template/blob/main/LICENSE)
+[![Version](https://img.shields.io/badge/version-v1.0.2-green.svg)](https://github.com/alexsaelao/express-ts-template.git)
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](https://github.com/alexsaelao/express-ts-template.git)
 [![Downloads](https://img.shields.io/npm/dm/express.svg)](https://github.com/expressjs/express.git)
 
 ## Overview
@@ -29,116 +29,103 @@ This project is based on PostgreSQL by default. However, it's designed to be fle
 
 ## Requirements
 
-- Node.js (v16.x or higher)
-- npm (v8.x or higher)
+- Node.js (v18.x or [Node.js LTS recommended](https://nodejs.org/en/download/))
 
 ## Getting Started
 
-To use this template, simply click on the "Use this template" button on GitHub or clone this repository:
+To get started with [Project Name], follow these steps:
 
-```bash
-git clone https://github.com/iamlex01/express-ts-template.git
-```
-After cloning the repository, navigate to the project directory:
+1. **Fork the project**: Click the "Fork" button in the top-right corner of the GitHub repository page. This will create a copy of the project in your GitHub account.
 
-```bash
-cd express-ts-template
-```
+2. **Clone your fork**: Use Git to clone your forked repository to your local machine. Replace `<username>` with your GitHub username and `<project>` with the name of the project:
 
-Install the dependencies using npm:
+    ```bash
+    git clone https://github.com/<username>/<project>.git
+    ```
 
-```bash
-npm install
-```
-Once the dependencies are installed, you must create databases first.
+Once the dependencies are installed, you must setup databases and create table first.
 
-### Create Databases
+5. **Setup PostgreSQL database and create table**: Make sure PostgreSQL is installed on your system. Then, use a PostgreSQL client such as `psql` or a graphical user interface like pgAdmin to connect to your PostgreSQL instance. Once connected, execute the following SQL command to create the `sampleTable`:
 
-To set up the database schema, you can use the following SQL command to create the sample table:
+    ```sql
+    CREATE TABLE sampleTable (
+        id UUID NOT NULL,
+        name CHARACTER VARYING(255) NOT NULL,
+        lastname CHARACTER VARYING(255) NOT NULL,
+        deleted_at TIMESTAMP WITHOUT TIME ZONE,
+        created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+        updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+        CONSTRAINT "sampleTable_pkey" PRIMARY KEY (id)
+    );
+    ```
+6. **Update configuration**: Update the `.env` file with your own configuration for development and production environments. Here's an example configuration:
 
-```sql
-CREATE TABLE sampleTable (
-    id UUID NOT NULL,
-    name CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
-    lastname CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
-    deleted_at TIMESTAMP WITHOUT TIME ZONE,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    CONSTRAINT "sampleTable_pkey" PRIMARY KEY (id)
-);
-```
-### Configure Environment Variables
+    ```plaintext
+    NODE_ENV=development
+    
+    # Development Configuration
+    PORT=4000
+    
+    # Development Database Configuration
+    DB_HOSTNAME=127.0.0.1
+    DB_PORT=5432
+    DB_DIRECT=postgres
+    DB_NAME=demo-express-template
+    DB_USERNAME=postgres
+    DB_PASSWORD=123456
+    
+    # Production Configuration
+    PORT_PROD=6000
+    
+    # Production Database Configuration
+    DB_HOSTNAME_PROD=127.0.0.1
+    DB_PORT_PROD=5432
+    DB_DIRECT_PROD=postgres
+    DB_NAME_PROD=demo-express-template
+    DB_USERNAME_PROD=postgres
+    DB_PASSWORD_PROD=123456
+    ```
 
-Update the .env file with your own configuration for development and production environments.
+Ensure that to replace the placeholder values (e.g., DB_USERNAME, DB_PASSWORD, DB_NAME) with your actual database credentials.
 
-```dotenv
-NODE_ENV=development
-# Development Configuration
-PORT=4000
+7. **Generating models from databases**: Before generating models, specify the tables you want to generate models for by adding the table names to the `tablesList` constant in the `src/utils/generate-model.ts` file:
 
-# Development Database Configuration
-DB_HOSTNAME=127.0.0.1
-DB_PORT=5432
-DB_DIRECT=postgres
-DB_NAME=demo-express-template
-DB_USERNAME=postgres
-DB_PASSWORD=123456
+    ```typescript
+    ...
 
-# Production Configuration
-PORT_PROD=6000
+    const tablesList: Array<string> = [
+      'sampleTable',
+    ];
 
-# Production Database Configuration
-DB_HOSTNAME_PROD=127.0.0.1
-DB_PORT_PROD=5432
-DB_DIRECT_PROD=postgres
-DB_NAME_PROD=demo-express-template
-DB_USERNAME_PROD=postgres
-DB_PASSWORD_PROD=123456
-```
+    ...
+    ```
 
-Make sure to replace the placeholder values (e.g., DB_USERNAME, DB_PASSWORD) with your actual database credentials.
+7. **Generate models**: Once the tables are added, you can generate models using the following command:
 
-### For generating models from databases:
+    ```bash
+    npm run gen-model
+    ```
 
-Before generating models, you may need to specify the tables you want to generate models for. You can do this by adding the table names to the \`tablesList\` constant in the \`src/utils/generate-model.ts\` file:
-
-```typescript
-...
-
-const tablesList: Array<string> = [
-  'sampleTable',
-];
-
-...
-```
-Once the tables are added, you can generate models using the following command:
-
-```bash
-npm run gen-model
-```
 This command will generate models for Sequelize from an existing database using Sequelize Auto.
 
-**Note**: Ensure that you have the required Node.js and npm versions installed before running the commands. Additionally, make sure to configure the database type and tables before generating models.
+**Note**: Ensure that you have the required Node.js installed before running the commands. Additionally, make sure to configure the database type and tables before generating models.
 
-Once the dependencies are installed, created databases and generated models, you can start the development server.
+8. **Running the server**:
+    - For development server, use the following command:
+        ```bash
+        npm run dev
+        ```
+        This will start the Express.js server with TypeScript support. You can then access your web application at `http://localhost:4000` by default. Any changes you make to the source code will automatically trigger a server restart due to hot-reloading enabled by default in development mode.
+    
+    - For production deployment, use the following command:
+        ```bash
+        npm start
+        ```
+        This will start the Express.js server in production mode, suitable for deploying your application to a production environment.
 
-### For development server, you can use the following command:
+Now you're all set up and ready to start working on the project!
 
-```bash
-npm run dev
-```
-
-This command will start the Express.js server with TypeScript support. You can then access your web application at `http://localhost:4000` by default. Any changes you make to the source code will automatically trigger a server restart due to hot-reloading enabled by default in development mode.
-
-### For production deployment, you can use the following command:
-
-```bash
-npm start
-```
-
-This command will start the Express.js server in production mode, suitable for deploying your application to a production environment.
-
-### Project Structure
+## Project Structure
 
     app/
     ├── src/                    
@@ -182,8 +169,20 @@ This command will start the Express.js server in production mode, suitable for d
     ├── package.json
     └── tsconfig.json
 
-### Dependencies
-> **Package**: [Express](https://github.com/expressjs/express), [Express-validator](https://github.com/express-validator/express-validator), [Typescript](https://github.com/Microsoft/TypeScript), [tsc](https://github.com/basarat/tsc), [Dotenv](https://github.com/motdotla/dotenv), [cors](https://github.com/expressjs/cors), [module-alias](https://github.com/ilearnio/module-alias), [moment](https://github.com/moment/moment), [Sequelize](https://github.com/sequelize/sequelize), [pg](https://github.com/brianc/node-postgres), [pg-hstore](https://github.com/scarney81/pg-hstore), [sequelize-auto](https://github.com/sequelize/sequelize-auto), [ts-node-dev](https://github.com/wclr/ts-node-dev)
+## Dependencies
+- [Express](https://github.com/expressjs/express)
+- [Express-validator](https://github.com/express-validator/express-validator)
+- [Typescript](https://github.com/Microsoft/TypeScript)
+- [tsc](https://github.com/basarat/tsc)
+- [Dotenv](https://github.com/motdotla/dotenv)
+- [cors](https://github.com/expressjs/cors)
+- [module-alias](https://github.com/ilearnio/module-alias)
+- [moment](https://github.com/moment/moment)
+- [Sequelize](https://github.com/sequelize/sequelize)
+- [pg](https://github.com/brianc/node-postgres)
+- [pg-hstore](https://github.com/scarney81/pg-hstore)
+- [sequelize-auto](https://github.com/sequelize/sequelize-auto)
+- [ts-node-dev](https://github.com/wclr/ts-node-dev)
 
 ## License
 express-ts-template is licensed under the [MIT License](https://github.com/iamlex01/express-ts-template/blob/main/LICENSE). Feel free to use and modify it according to your needs.
