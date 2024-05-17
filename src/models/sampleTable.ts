@@ -40,13 +40,13 @@ export class sampleTable extends Model<sampleTableAttributes, sampleTableCreatio
       allowNull: false
     }
   }, {
-    tableName: 'sampleTable',
+    tableName: 'sample_table',
     schema: 'public',
     timestamps: true,
     paranoid: true,
     indexes: [
       {
-        name: "sampleTable_pkey",
+        name: "sample_table_pkey",
         unique: true,
         fields: [
           { name: "id" },

@@ -26,4 +26,7 @@ export default class Config {
 		defaultQuantityMinMaxLimit: { min:0 },
 		defaultNameMinMaxLimit: { min:1, max: 100 },
 	};
+    public static readonly sample = {
+        notFound: "product_not_found",
+    };
 }

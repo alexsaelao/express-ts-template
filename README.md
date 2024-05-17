@@ -55,17 +55,17 @@ To get started with [Project Name], follow these steps:
     ```
     Once the dependencies are installed, you must setup databases and create table first.
 
-5. **Setup PostgreSQL database and create table**: Make sure PostgreSQL is installed on your system. Then, use a PostgreSQL client such as `psql` or a graphical user interface like pgAdmin to connect to your PostgreSQL instance. Once connected, execute the following SQL command to create the `sampleTable`:
+5. **Setup PostgreSQL database and create table**: Make sure PostgreSQL is installed on your system. Then, use a PostgreSQL client such as `psql` or a graphical user interface like pgAdmin to connect to your PostgreSQL instance. Once connected, execute the following SQL command to create the `sample_table`:
 
     ```sql
-    CREATE TABLE sampleTable (
+    CREATE TABLE sample_table (
         id UUID NOT NULL,
         name CHARACTER VARYING(255) NOT NULL,
         lastname CHARACTER VARYING(255) NOT NULL,
         deleted_at TIMESTAMP WITHOUT TIME ZONE,
         created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
         updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-        CONSTRAINT "sampleTable_pkey" PRIMARY KEY (id)
+        CONSTRAINT "sample_table_pkey" PRIMARY KEY (id)
     );
     ```
 6. **Update configuration**: Update the `.env` file with your own configuration for development and production environments. Here's an example configuration:
@@ -104,7 +104,7 @@ To get started with [Project Name], follow these steps:
     ...
 
     const tablesList: Array<string> = [
-      'sampleTable',
+      'sample_table',
     ];
 
     ...

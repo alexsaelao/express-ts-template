@@ -11,7 +11,7 @@ const config: any = {
   password: process.env.DB_PASSWORD,
 };
 const tablesList: Array<string> = [
-  'sampleTable',
+  'sample_table',
 ];
 const skipTables: Array<string> = [];
 

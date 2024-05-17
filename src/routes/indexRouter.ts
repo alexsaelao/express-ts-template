@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import LoginRouter from '@routes/sampleRouter';
+import SampleRouter from '@routes/sampleRouter';
 
 export default class IndexRouter {
     private static _instance: IndexRouter;
@@ -18,6 +18,6 @@ export default class IndexRouter {
 	}
 
     private initializeRoutes(): void {
-        this.router.use('/', LoginRouter.getInstance().getRouter());
+        this.router.use('/', SampleRouter.getInstance().getRouter());
     }
 }
