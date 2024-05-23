@@ -5,7 +5,9 @@ import LoggerMiddleware from '@middlewares/requestHandler';
 import ErrorHandlerMiddleware from '@middlewares/errorHandler';
 import ApiError from '@middlewares/apiError';
 import moment from 'moment';
-
+const corsOptions = {
+	origin: '*'
+};
 export default class App {
     private static _instance: App;
     private readonly app: Express;
@@ -30,7 +32,7 @@ export default class App {
 
     // Configures the Express application instance with middleware functions.
     private configure(): void {
-        this.app.use(cros()); // Enable Cross-Origin Resource Sharing (CORS)
+        this.app.use(cros(corsOptions)); // Enable Cross-Origin Resource Sharing (CORS)
         this.app.use(express.json()); // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
         this.app.use(express.urlencoded({ extended: true })); // This middleware allows encoding of URL-encoded bodies.
 
